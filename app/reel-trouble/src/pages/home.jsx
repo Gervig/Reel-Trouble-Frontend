@@ -1,14 +1,14 @@
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import LoginForm from "../components/LoginForm";
+import facade from "../util/apiFacade";
 
 function Home() {
   return (
     <div>
+      <Header />
       <h2>Welcome to Reel Trouble</h2>
-      <img
-        src="https://raw.githubusercontent.com/Gervig/ReelTrouble/refs/heads/main/docs/reel_trouble.png"
-        alt="Reel Trouble Logo"
-        width="400"
-      />
+      <LoginForm facade={facade}/>
       <Footer />
     </div>
   );
