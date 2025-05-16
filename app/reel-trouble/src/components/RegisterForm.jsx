@@ -23,7 +23,6 @@ function RegisterForm({ facade }) {
 
   return (
     <div className="register-form">
-        <p>Register below!</p>
       <form onSubmit={handleRegister}>
         <input
           type="text"
