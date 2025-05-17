@@ -1,0 +1,21 @@
+/* App.module.css */
+.container {
+  padding: 2rem;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.title {
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: teal;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
