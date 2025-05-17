@@ -24,9 +24,9 @@ function Footer() {
       {/* github repo link */}
       <a href="https://github.com/Gervig/ReelTrouble" target="_blank" >
         <img
-          src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+          src="https://www.pngarts.com/files/8/Github-Logo-Transparent-Background-PNG.png"
           alt="GitHub"
-          width="40"
+          width="60"
         />
       </a>
     </div>
