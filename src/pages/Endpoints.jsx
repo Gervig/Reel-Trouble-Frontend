@@ -87,6 +87,10 @@ function EndPoints() {
           </tbody>
         </table>
       </div>
+      <div>
+        <p className={styles.pTableInfo}>❌ <strong>= Not secured</strong> ✅ <strong>= User secured</strong> 🔒 <strong>= Admin secured</strong></p>
+        <br />
+      </div>
       <Footer />
     </div>
   );
