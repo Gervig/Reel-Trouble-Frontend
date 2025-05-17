@@ -23,6 +23,7 @@ function Footer() {
         </p>
       )}
       {/* github repo link */}
+      <p>Link to deployed API can be found <Link to="https://reeltrouble.dataduck.dk/api/routes">here!</Link></p>
       <a href="https://github.com/Gervig/ReelTrouble" target="_blank" >
         <img
           src="https://www.pngarts.com/files/8/Github-Logo-Transparent-Background-PNG.png"
