@@ -1,6 +1,10 @@
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+
 function Vision() {
   return (
     <div>
+      <Header />
       <h2>Vision of the API</h2>
       <p>
         ReelTrouble is An API that suggests movies based on user preferences.
@@ -17,6 +21,7 @@ function Vision() {
         Anyone can choose to get a movie suggestion within a specific genre, but
         here their like list is not included.
       </p>
+      <Footer />
     </div>
   );
 }
