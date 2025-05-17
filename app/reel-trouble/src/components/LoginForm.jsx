@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import styles from "../App.module.css";
 
 function LoginForm({ facade }) {
   const [username, setUsername] = useState("");
@@ -34,7 +35,7 @@ function LoginForm({ facade }) {
   };
 
   return (
-    <div className="login-form">
+    <div className={styles.container}>
       {!facade.loggedIn() ? (
         <form onSubmit={handleLogin}>
           <input
