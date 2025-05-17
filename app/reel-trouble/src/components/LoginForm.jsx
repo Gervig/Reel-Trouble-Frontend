@@ -38,7 +38,7 @@ function LoginForm({ facade }) {
     <div>
       {!facade.loggedIn() ? (
         <form onSubmit={handleLogin}>
-          <input
+          <input className={styles.input}
             type="text"
             id="username"
             name="username"
@@ -46,7 +46,7 @@ function LoginForm({ facade }) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <input
+          <input className={styles.input}
             type="password"
             id="password"
             name="password"
@@ -54,7 +54,7 @@ function LoginForm({ facade }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit" id="bt-login">
+          <button className={styles.button} type="submit" id="bt-login">
             Login
           </button>
         </form>
@@ -63,7 +63,7 @@ function LoginForm({ facade }) {
           <p>
             Logged in as <strong>{facade.getUsername()}</strong>
           </p>
-          <button type="button" id="bt-logout" onClick={handleLogout}>
+          <button className={styles.button} type="button" id="bt-logout" onClick={handleLogout}>
             Logout
           </button>
         </div>
