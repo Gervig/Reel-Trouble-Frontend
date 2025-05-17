@@ -1,9 +1,10 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import styles from "../App.module.css";
 
 function Vision() {
   return (
-    <div>
+      <div className={styles.container}>
       <Header />
       <h2>Vision of the API</h2>
       <p>

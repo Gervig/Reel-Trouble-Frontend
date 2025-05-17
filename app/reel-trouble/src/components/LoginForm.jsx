@@ -35,7 +35,7 @@ function LoginForm({ facade }) {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       {!facade.loggedIn() ? (
         <form onSubmit={handleLogin}>
           <input

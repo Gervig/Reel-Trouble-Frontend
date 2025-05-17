@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-
+import styles from "../App.module.css";
 function Footer() {
   const location = useLocation();
 
@@ -22,7 +22,7 @@ function Footer() {
         </p>
       )}
       {/* github repo link */}
-      <a href="https://github.com/Gervig/ReelTrouble" target="_blank">
+      <a href="https://github.com/Gervig/ReelTrouble" target="_blank" >
         <img
           src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           alt="GitHub"
