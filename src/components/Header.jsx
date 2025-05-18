@@ -13,7 +13,7 @@ function Header() {
     "https://raw.githubusercontent.com/Gervig/images-for-hosting/refs/heads/main/reeltrouble2.gif";
 
   return (
-    <div>
+    <header>
       <Link
         to="/"
         className={styles.header}
@@ -30,9 +30,8 @@ function Header() {
           />
         </div>
       </Link>
-
       <LoginForm facade={facade} />
-    </div>
+    </header>
   );
 }
 
