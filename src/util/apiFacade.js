@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 const BASE_URL = "https://reeltrouble.dataduck.dk/api/";
 const LOGIN_ENDPOINT = "auth/login";
 const REGISTER_ENDPOINT = "auth/register";
+const ADMIN_ENDPOINT = "admin";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -70,7 +71,7 @@ const register = (user, password) => {
 //Step 11
 const fetchData = () => {
   const options = makeOptions("GET", true); //True add's the token
-  return fetch(BASE_URL + "hotels", options).then(handleHttpErrors);
+  return fetch(BASE_URL + "movies", options).then(handleHttpErrors);
 };
 
 const makeOptions = (method, addToken, body) => {

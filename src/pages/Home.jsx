@@ -10,7 +10,6 @@ function Home() {
     <div className={styles.container}>
       <Header />
       <h2>Welcome to Reel Trouble</h2>
-      <LoginForm facade={facade}/>
       <Footer />
     </div>
   );

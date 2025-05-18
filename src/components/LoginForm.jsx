@@ -35,7 +35,7 @@ function LoginForm({ facade }) {
   };
 
   return (
-    <div>
+    <div className={styles.loginform}>
       {!facade.loggedIn() ? (
         <form onSubmit={handleLogin}>
           <input
@@ -59,12 +59,12 @@ function LoginForm({ facade }) {
           <button className={styles.button} type="submit" id="bt-login">
             Login
           </button>
-          <p>
+          <p className={styles.userText}>
             Don't have an account? <Link to="/register">Register here!</Link>
           </p>
         </form>
       ) : (
-        <div className={styles.logout}>
+        <div className={styles.loginform}>
           <p className={styles.userText}>
             Logged in as <strong>{facade.getUsername()}</strong>
           </p>
