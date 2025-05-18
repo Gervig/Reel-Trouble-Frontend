@@ -15,8 +15,6 @@ function Header() {
       to="/"
       className={styles.header}
       style={{ display: "block", textDecoration: "none" }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div>
         <img
@@ -24,6 +22,8 @@ function Header() {
           alt="Reel Trouble Logo"
           width="200"
           height="200"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         />
       </div>
     </Link>
