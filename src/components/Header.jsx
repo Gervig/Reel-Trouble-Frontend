@@ -20,7 +20,7 @@ function Header() {
     >
       <div>
         <img
-          src="https://raw.githubusercontent.com/Gervig/ReelTrouble/refs/heads/main/docs/reel_trouble.png"
+          src={isHovered ? gifSrc : staticSrc}
           alt="Reel Trouble Logo"
           width="200"
           height="200"
