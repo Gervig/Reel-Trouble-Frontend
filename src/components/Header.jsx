@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import styles from "../App.module.css";
-import facade from "../util/apiFacade";
-import LoginForm from "./LoginForm";
 import { useState } from "react";
 
 function Header() {
@@ -13,10 +11,9 @@ function Header() {
     "https://raw.githubusercontent.com/Gervig/images-for-hosting/refs/heads/main/reeltrouble2.gif";
 
   return (
-    <header>
+    <header className={styles.header}>
       <Link
         to="/"
-        className={styles.header}
         style={{ display: "block", textDecoration: "none" }}
       >
         <div>
@@ -30,7 +27,6 @@ function Header() {
           />
         </div>
       </Link>
-      <LoginForm facade={facade} />
     </header>
   );
 }

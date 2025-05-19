@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../App.module.css";
 
 
 function RegisterForm({ facade }) {
@@ -22,9 +23,9 @@ function RegisterForm({ facade }) {
   };
 
   return (
-    <div className="register-form">
+    <div className={styles.registerform}>
       <form onSubmit={handleRegister}>
-        <input
+        <input className={styles.input}
           type="text"
           id="username"
           name="username"
@@ -32,7 +33,7 @@ function RegisterForm({ facade }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
+        <input className={styles.input}
           type="password"
           id="password"
           name="password"
@@ -40,7 +41,7 @@ function RegisterForm({ facade }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" id="bt-register">
+        <button type="submit" id="bt-register" className={styles.button}>
           Register
         </button>
       </form>
