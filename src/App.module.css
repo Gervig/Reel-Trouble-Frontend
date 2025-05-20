@@ -139,6 +139,38 @@ a:visited {
   background-color: #e6e6e6;
 }
 
+.movieTable {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+.movieTable th,
+.movieTable td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  background-color: #fdfcfc;
+}
+
+.movieTable th {
+  background-color: #e6e6e6;
+}
+
+.movieTable th:hover {
+  color: #e54e35;
+  cursor: pointer;
+}
+
+.movieTableRow:hover {
+  color: red;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .endpointTable {

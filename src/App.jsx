@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Vision from "./pages/Vision";
 import EndPoints from "./pages/Endpoints";
+import AllMovies from "./pages/AllMovies";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Route path="/vision" element={<Vision />} />
               <Route path="/endpoints" element={<EndPoints />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/movies" element={<AllMovies />} />
             </Routes>
           </div>
         </Router>
