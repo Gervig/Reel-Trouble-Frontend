@@ -27,6 +27,7 @@
   background-color: #17283b;
   padding: 0.75rem 1.5rem;
   position: sticky;
+  font-family: sans-serif;
   top: 0;
   z-index: 999;
   border-top: #e54e35;
@@ -64,7 +65,7 @@ a {
   font-weight: bold;
 }
 
-a:hover{
+a:hover {
   text-decoration: underline;
 }
 
@@ -81,7 +82,6 @@ a:visited {
   padding: 1rem;
   text-align: center;
 }
-
 
 .footer {
   grid-area: footer;
