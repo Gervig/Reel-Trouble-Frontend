@@ -4,9 +4,11 @@ import Header from "../components/Header";
 import Navrow from "../components/Navrow";
 import { useEffect, useState } from "react";
 import { fetchData } from "../util/fetchData";
+import Spinner from "../components/Spinner";
 
 function AllMovies() {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const URL = "https://reeltrouble.dataduck.dk/api/movies";
 
   function getMovies(callback) {
@@ -14,13 +16,25 @@ function AllMovies() {
   }
 
   useEffect(() => {
-    getMovies((data) => setMovies(data));
+    setLoading(true); // show spinner
+    getMovies((data) => {
+      setMovies(data);
+      setLoading(false); // hide spinner
+    });
   }, []);
+
   return (
     <div className={styles.container}>
       <Header />
       <Navrow />
-      <MovieList movies={movies}/>
+      {loading ? (
+        <div className={styles.content}>
+          <Spinner />
+          <h2>loading...</h2>
+        </div>
+      ) : (
+        <MovieList movies={movies} />
+      )}
     </div>
   );
 }
