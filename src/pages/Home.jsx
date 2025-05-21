@@ -11,42 +11,6 @@ function Home() {
       <Navrow />
       <div className={styles.content}>
         <h2>Welcome to Reel Trouble</h2>
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
-        <p>test</p>
-        <br />
       </div>
         <Footer />
     </div>

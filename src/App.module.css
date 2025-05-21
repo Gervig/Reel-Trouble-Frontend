@@ -83,6 +83,10 @@ a:visited {
   text-align: center;
 }
 
+.content h2 {
+  font-family: sans-serif;
+}
+
 .footer {
   grid-area: footer;
   text-align: center;
