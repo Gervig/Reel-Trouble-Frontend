@@ -52,7 +52,7 @@ function EndPoints() {
                 <td>Shows movies with a given genre</td>
               </tr>
               <tr>
-                <td>api/movies/recommend/{`{genre}/{id}`}</td>
+                <td>api/movies/recommend/{`{genre}/{username}`}</td>
                 <td>GET</td>
                 <td>✅</td>
                 <td>Recommendations based on likes</td>
@@ -64,13 +64,13 @@ function EndPoints() {
                 <td>Random movie by genre</td>
               </tr>
               <tr>
-                <td>api/movies/like/{`{id}/{movieId}`}</td>
+                <td>api/movies/like/{`{username}/{movieId}`}</td>
                 <td>POST</td>
                 <td>✅</td>
                 <td>User likes a movie</td>
               </tr>
               <tr>
-                <td>api/movies/history/{`{id}`}</td>
+                <td>api/movies/history/{`{username}`}</td>
                 <td>GET</td>
                 <td>✅</td>
                 <td>Show user's liked movies</td>
@@ -82,7 +82,7 @@ function EndPoints() {
                 <td>Admins can add new movies</td>
               </tr>
               <tr>
-                <td>api/movies/random/{`{id}`}</td>
+                <td>api/movies/random/{`{username}`}</td>
                 <td>GET</td>
                 <td>✅</td>
                 <td>Random movie not yet liked</td>
