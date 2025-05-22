@@ -8,6 +8,7 @@
     "footer";
   grid-template-rows: auto auto 1fr auto;
   background-color: #d6d4d4;
+  min-height: 100vh;
 }
 
 /* Grid children */
