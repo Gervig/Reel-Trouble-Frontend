@@ -19,7 +19,8 @@ function App() {
               <Route path="/endpoints" element={<EndPoints />} />
               <Route path="/register" element={<Register />} />
               <Route path="/movies" element={<AllMovies />} />
-              <Route path="/users/:username" element={<User />}/>
+              <Route path="/users/:username" element={<User />} />
+              <Route path="/error" element={<Error />} />
             </Routes>
           </div>
         </Router>
