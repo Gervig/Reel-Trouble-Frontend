@@ -1,62 +1,42 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../App.module.css";
+import { useAuth } from "../context/AuthContext";
 
-function LoginForm({ facade }) {
-  const [username, setUsername] = useState("");
+function LoginForm() {
+  const { isLoggedIn, username, login, logout } = useAuth();
+  const [inputUser, setInputUser] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(facade.loggedIn());
-
-  useEffect(() => {
-    if (facade.loggedIn()) {
-      setUsername(facade.getUsername());
-    }
-  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await facade.login(username, password);
-      setIsLoggedIn(true);
-      setError("");
+      await login(inputUser, password);
     } catch (err) {
-      console.error("Login failed:", err);
+      console.log("Login failed: " + err);
       alert("Wrong username or password!");
-      setError("Login failed: " + (err.message || "Invalid credentials"));
     }
-  };
-
-  const handleLogout = () => {
-    facade.logout();
-    setIsLoggedIn(false);
-    setUsername("");
-    setPassword("");
   };
 
   return (
     <div className={styles.loginform}>
-      {!facade.loggedIn() ? (
+      {!isLoggedIn ? (
         <form onSubmit={handleLogin}>
           <input
             className={styles.input}
             type="text"
-            id="username"
-            name="username"
             placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={inputUser}
+            onChange={(e) => setInputUser(e.target.value)}
           />
           <input
             className={styles.input}
             type="password"
-            id="password"
-            name="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className={styles.button} type="submit" id="bt-login">
+          <button className={styles.button} type="submit">
             Login
           </button>
           <p className={styles.userText}>
@@ -67,14 +47,11 @@ function LoginForm({ facade }) {
         <div className={styles.loginform}>
           <p className={styles.userText}>
             Logged in as{" "}
-              <strong>{facade.getUsername()}</strong>
+            <Link to={`/users/${username}`}>
+              <strong>{username}</strong>
+            </Link>
           </p>
-          <button
-            className={styles.button}
-            type="button"
-            id="bt-logout"
-            onClick={handleLogout}
-          >
+          <button className={styles.button} onClick={logout}>
             Logout
           </button>
         </div>

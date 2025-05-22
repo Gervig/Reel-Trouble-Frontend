@@ -19,7 +19,7 @@ function App() {
               <Route path="/endpoints" element={<EndPoints />} />
               <Route path="/register" element={<Register />} />
               <Route path="/movies" element={<AllMovies />} />
-              <Route path="/users/:userId" element={<User />}/>
+              <Route path="/users/:username" element={<User />}/>
             </Routes>
           </div>
         </Router>
