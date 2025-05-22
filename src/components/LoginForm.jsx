@@ -65,12 +65,10 @@ function LoginForm({ facade }) {
         </form>
       ) : (
         <div className={styles.loginform}>
-          {/* <p className={styles.userText}>
+          <p className={styles.userText}>
             Logged in as{" "}
-            <Link to={`/users/${facade.getUserId()}`}>
               <strong>{facade.getUsername()}</strong>
-            </Link>
-          </p> */}
+          </p>
           <button
             className={styles.button}
             type="button"
