@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Vision from "./pages/Vision";
 import EndPoints from "./pages/Endpoints";
 import AllMovies from "./pages/AllMovies";
+import User from "./pages/User";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/endpoints" element={<EndPoints />} />
               <Route path="/register" element={<Register />} />
               <Route path="/movies" element={<AllMovies />} />
+              <Route path="/users/:userId" element={<User />}/>
             </Routes>
           </div>
         </Router>

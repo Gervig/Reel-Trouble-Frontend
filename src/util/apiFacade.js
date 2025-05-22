@@ -25,6 +25,19 @@ const getUsername = () => {
   }
 };
 
+const getUserId = () => {
+  const token = getToken();
+  if (!token) return null;
+
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.userId || decoded.sub || decoded.name || null;
+  } catch (e) {
+    console.error("Failed to decode token", e);
+    return null;
+  }
+};
+
 /* Insert utility-methods from later steps 
 here (REMEMBER to uncomment in the returned 
 object when you do)*/
