@@ -84,7 +84,11 @@ a:visited {
   text-align: center;
 }
 
-.content h1, h2, h3 {
+.content h1,
+h2,
+h3,
+h4,
+p {
   font-family: sans-serif;
 }
 
@@ -157,8 +161,30 @@ a:visited {
 .movieTable td {
   border: 1px solid #ccc;
   padding: 10px;
-  text-align: left;
+  text-align: right;
   background-color: #fdfcfc;
+  white-space: nowrap;
+  width: 1%;
+}
+
+table td.tdleft {
+  text-align: left;
+}
+table td.tdright {
+  text-align: right;
+}
+table td.tdcenter {
+  text-align: center;
+}
+
+table th.thleft {
+  text-align: left;
+}
+table th.thright {
+  text-align: right;
+}
+table th.thcenter {
+  text-align: center;
 }
 
 .movieTable th {

@@ -8,7 +8,7 @@ import ErrorPage from "../pages/Error";
 
 function User() {
   const { isLoggedIn, username } = useAuth();
-  const { username: routeUsername } = useParams(); // Get the URL param (e.g., "Casper")
+  const { username: routeUsername } = useParams();
 
   if (!isLoggedIn) {
     return (
@@ -33,7 +33,8 @@ function User() {
       <Navrow />
       <div className={styles.content}>
         <h2>User page goes here!</h2>
-        <p>{username}'s user page!</p>
+        <h3>{username}'s user page!</h3>
+        <h4>TODO: Link to user's liked list</h4>
       </div>
       <Footer />
     </div>

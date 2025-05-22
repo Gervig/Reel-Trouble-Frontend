@@ -8,24 +8,24 @@ function MovieList({ movies }) {
         <table className={styles.movieTable}>
           <thead>
             <tr>
-              <th>Title</th>
-              <th>IMDb rating</th>
-              <th>Minutes</th>
-              <th>Release</th>
+              <th className={styles.thcenter}>Title</th>
+              <th className={styles.thcenter}>IMDb rating</th>
+              <th className={styles.thcenter}>Minutes</th>
+              <th className={styles.thcenter}>Release</th>
             </tr>
           </thead>
           <tbody>
             {movies.map((movie) => (
               <tr key={movie.id} className={styles.movieTableRow}>
-                <td>{movie.title}</td>
-                <td>{movie.imdbRating}</td>
+                <td className={styles.tdleft}><strong>{movie.title}</strong></td>
+                <td className={styles.tdcenter}>{movie.imdbRating}</td>
                 <td>{movie.minutes}</td>
-                <td>
-                  {movie.releaseDate[2]}
-                  {"-"}
-                  {movie.releaseDate[1]}
-                  {"-"}
-                  {movie.releaseDate[0]}
+                <td className="date">
+                  {`${String(movie.releaseDate[2]).padStart(2, "0")}-${String(
+                    movie.releaseDate[1]
+                  ).padStart(2, "0")}-${String(movie.releaseDate[0]).slice(
+                    -4
+                  )}`}
                 </td>
               </tr>
             ))}
