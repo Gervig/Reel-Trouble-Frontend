@@ -341,12 +341,13 @@ table th.thcenter {
 
 .errorBubble {
   position: absolute;
+  transition: opacity 1s ease-out;
   top: -2.5rem;
   left: 0;
-  background-color: #f8d7da;
-  color: #842029;
+  background-color: white;
+  color: red;
   padding: 0.5rem 1rem;
-  border: 1px solid #f5c2c7;
+  border: 1px solid #e54e35;
   border-radius: 8px;
   font-size: 0.9rem;
   max-width: 300px;

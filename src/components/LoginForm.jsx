@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../App.module.css";
 import { useAuth } from "../context/AuthContext";
+import ErrorBubble from "./ErrorBubble";
 
 function LoginForm() {
   const { isLoggedIn, username, login, logout } = useAuth();
@@ -24,7 +25,7 @@ function LoginForm() {
     <div className={styles.loginform}>
       <div className={styles.formContainer}>
         {errorMessage && (
-          <div className={styles.errorBubble}>{errorMessage}</div>
+          <ErrorBubble message={"Wrong username or passsword!"} />
         )}
         {!isLoggedIn ? (
           <form onSubmit={handleLogin}>
