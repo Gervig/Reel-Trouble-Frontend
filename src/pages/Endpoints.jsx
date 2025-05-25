@@ -70,6 +70,12 @@ function EndPoints() {
                 <td>User likes a movie</td>
               </tr>
               <tr>
+                <td>api/movies/unlike/{`{username}/{movieId}`}</td>
+                <td>DELETE</td>
+                <td>✅</td>
+                <td>User unlikes a movie</td>
+              </tr>
+              <tr>
                 <td>api/movies/history/{`{username}`}</td>
                 <td>GET</td>
                 <td>✅</td>

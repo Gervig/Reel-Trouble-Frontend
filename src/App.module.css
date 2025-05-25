@@ -176,6 +176,10 @@ p {
   margin-left: 0.25rem;
 }
 
+.button:hover {
+  background-color: #e54e35;
+}
+
 .input {
   width: 100px;
   margin-left: 0.1rem;
@@ -422,4 +426,37 @@ table th.thcenter {
   margin: 2rem;
   margin-top: 5rem;
   margin-bottom: 2rem;
+}
+
+.genreSelect {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border 0.2s ease-in-out;
+}
+
+.genreSelect:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.genreButton {
+  padding: 0.5rem 1.2rem;
+  margin-left: 0.5rem;
+  background-color: teal;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.genreButton:hover {
+  background-color: #e54e35;
 }

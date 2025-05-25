@@ -24,7 +24,15 @@ function Home() {
             </h3>
           </div>
         ) : (
-          <h3>Login to use Reel Trouble's features</h3>
+          <div className={styles.content}>
+            <h3>
+              <Link link to="/randombygenre">
+                <strong>Find a random movie by genre!</strong>
+              </Link>
+            </h3>
+            <br />
+            <h3>Login to use all of Reel Trouble's features</h3>
+          </div>
         )}
       </div>
       <Footer />
