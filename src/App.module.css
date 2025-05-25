@@ -78,6 +78,56 @@ a:visited {
   text-align: right;
 }
 
+/* Hamburger menu container */
+.mobileMenu {
+  display: none; /* Hidden on desktop */
+  position: relative;
+}
+
+/* Hamburger icon */
+.hamburger {
+  font-size: 28px;
+  color: #e54e35;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Dropdown for mobile nav */
+.dropdown {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background-color: #17283b;
+  border: 1px solid #e54e35;
+  padding: 0.5rem 1rem;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
+
+.dropdown a {
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: #e54e35;
+  font-weight: bold;
+}
+
+.dropdown a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive rules */
+@media (max-width: 768px) {
+  .links {
+    display: none; /* Hide full nav on small screens */
+  }
+
+  .mobileMenu {
+    display: block; /* Show hamburger menu */
+  }
+}
+
 .content {
   grid-area: content;
   padding: 1rem;
