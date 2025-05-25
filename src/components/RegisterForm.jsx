@@ -10,17 +10,20 @@ function RegisterForm({ facade }) {
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      await facade.register(username, password);
-      navigate("/");
-      setError("");
-    } catch (err) {
-      console.error("Register failed:", err);
-      alert("Register failed");
-      setError("Register failed: " + (err.message || "Invalid credentials"));
-    }
-  };
+  e.preventDefault();
+  try {
+    await facade.register(username, password);
+    navigate("/");
+    // Optionally, use a toast instead of alert:
+    // setSuccess("Registration successful!")  // if you want a green bubble
+    alert("Register successful, you can now login");
+    setError("");
+  } catch (err) {
+    console.error("Register failed:", err);
+    setError("Register failed: " + (err.message || "Invalid credentials"));
+  }
+};
+
 
   return (
     <div className={styles.registerform}>
@@ -45,7 +48,7 @@ function RegisterForm({ facade }) {
           Register
         </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <div className={styles.errorBubble}>{error}</div>}
     </div>
   );
 }
