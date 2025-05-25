@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Vision from "./pages/Vision";
 import EndPoints from "./pages/Endpoints";
 import AllMovies from "./pages/AllMovies";
+import Random from "./pages/Random";
 import User from "./pages/User";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
               <Route path="/movies" element={<AllMovies />} />
               <Route path="/users/:username" element={<User />} />
               <Route path="/error" element={<Error />} />
+              <Route path="/random" element={<Random />}></Route>
             </Routes>
           </div>
         </Router>

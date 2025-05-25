@@ -6,7 +6,7 @@ const REGISTER_ENDPOINT = "auth/register";
 const LIKE_ENDPOINT = "movies/like";
 const UNLIKE_ENDPOINT = "movies/unlike";
 const ADMIN_ENDPOINT = "admin";
-const RANDOM_ENDPOINT = "random";
+const RANDOM_ENDPOINT = "movies/random";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
