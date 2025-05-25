@@ -3,7 +3,6 @@ import styles from "../App.module.css";
 function MovieList({ movies }) {
   return (
     <div className={styles.content}>
-      <h2>List of Movies</h2>
       <div className={styles.tableContainer}>
         <table className={styles.movieTable}>
           <thead>

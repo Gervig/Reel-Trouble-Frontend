@@ -5,10 +5,30 @@ import Navrow from "../components/Navrow";
 import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";
 import ErrorPage from "../pages/Error";
+import MovieList from "../components/MovieList";
+import Spinner from "../components/Spinner";
+import { fetchData } from "../util/fetchData";
+import { useEffect, useState } from "react";
 
 function User() {
   const { isLoggedIn, username } = useAuth();
   const { username: routeUsername } = useParams();
+
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const URL = "https://reeltrouble.dataduck.dk/api/movies/history/" + username;
+
+  function getMovies(callback) {
+    fetchData(URL, callback);
+  }
+
+  useEffect(() => {
+    setLoading(true); // show spinner
+    getMovies((data) => {
+      setMovies(data);
+      setLoading(false); // hide spinner
+    });
+  }, []);
 
   if (!isLoggedIn) {
     return (
@@ -32,9 +52,16 @@ function User() {
       <Header />
       <Navrow />
       <div className={styles.content}>
-        <h2>User page goes here!</h2>
-        <h3>{username}'s user page!</h3>
-        <h4>TODO: Link to user's liked list</h4>
+        <h1>{username}'s user page!</h1>
+        <h2>{username}'s like-list</h2>
+        {loading ? (
+          <div className={styles.content}>
+            <Spinner />
+            <h2>loading...</h2>
+          </div>
+        ) : (
+          <MovieList movies={movies} />
+        )}
       </div>
       <Footer />
     </div>
