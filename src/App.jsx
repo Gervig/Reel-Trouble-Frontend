@@ -7,6 +7,7 @@ import EndPoints from "./pages/Endpoints";
 import AllMovies from "./pages/AllMovies";
 import Random from "./pages/Random";
 import User from "./pages/User";
+import RandomByGenre from "./pages/RandomByGenre";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/users/:username" element={<User />} />
               <Route path="/error" element={<Error />} />
               <Route path="/random" element={<Random />}></Route>
+              <Route path="/randombygenre" element={<RandomByGenre />}></Route>
             </Routes>
           </div>
         </Router>
