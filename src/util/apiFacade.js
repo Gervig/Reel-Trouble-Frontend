@@ -4,7 +4,9 @@ const BASE_URL = "https://reeltrouble.dataduck.dk/api/";
 const LOGIN_ENDPOINT = "auth/login";
 const REGISTER_ENDPOINT = "auth/register";
 const LIKE_ENDPOINT = "movies/like";
+const UNLIKE_ENDPOINT = "movies/unlike";
 const ADMIN_ENDPOINT = "admin";
+const RANDOM_ENDPOINT = "random";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -93,6 +95,25 @@ const like = (username, movieId) => {
   ).then(handleHttpErrors);
 };
 
+//TODO: implement unlike on backend, should be a POST or DELETE?
+const unlike = (username, movieId) => {
+  const options = makeOptions("POST", true, {
+    username: username,
+    movieId: movieId,
+  });
+  return fetch(
+    BASE_URL + LIKE_ENDPOINT + "/" + username + "/" + movieId,
+    options
+  ).then(handleHttpErrors);
+};
+
+const random = (username) => {
+  const options = makeOptions("GET", true);
+  return fetch(BASE_URL + RANDOM_ENDPOINT + "/" + username, options).then(
+    handleHttpErrors
+  );
+};
+
 //Step 11
 const fetchData = () => {
   const options = makeOptions("GET", true); //True add's the token
@@ -127,6 +148,8 @@ const facade = {
   fetchData,
   getUsername,
   like,
+  unlike,
+  random,
 };
 
 export default facade;
