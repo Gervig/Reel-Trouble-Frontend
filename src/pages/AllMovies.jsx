@@ -33,7 +33,10 @@ function AllMovies() {
           <h2>loading...</h2>
         </div>
       ) : (
-        <MovieList movies={movies} />
+        <div className={styles.content}>
+          <h1>All movies</h1>
+          <MovieList movies={movies} />
+        </div>
       )}
     </div>
   );

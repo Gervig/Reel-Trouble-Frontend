@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 const BASE_URL = "https://reeltrouble.dataduck.dk/api/";
 const LOGIN_ENDPOINT = "auth/login";
 const REGISTER_ENDPOINT = "auth/register";
+const LIKE_ENDPOINT = "movies/like";
 const ADMIN_ENDPOINT = "admin";
 
 function handleHttpErrors(res) {
@@ -81,6 +82,17 @@ const register = (user, password) => {
     });
 };
 
+const like = (username, movieId) => {
+  const options = makeOptions("POST", true, {
+    username: username,
+    movieId: movieId,
+  });
+  return fetch(
+    BASE_URL + LIKE_ENDPOINT + "/" + username + "/" + movieId,
+    options
+  ).then(handleHttpErrors);
+};
+
 //Step 11
 const fetchData = () => {
   const options = makeOptions("GET", true); //True add's the token
@@ -114,6 +126,7 @@ const facade = {
   logout,
   fetchData,
   getUsername,
+  like,
 };
 
 export default facade;
