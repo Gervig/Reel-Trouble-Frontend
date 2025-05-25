@@ -72,7 +72,7 @@ function MovieList({ movies }) {
                   {isLoggedIn && (
                     <td className={styles.tdcenter}>
                       <button
-                        className={styles.likeButton}
+                      className={alreadyLiked ? styles.likeButtonLiked : styles.likeButton}
                         onClick={() => like(movie)}
                         disabled={alreadyLiked}
                         title={
