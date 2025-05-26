@@ -23,6 +23,11 @@ function Home() {
       <Navrow />
       <div className={styles.content}>
         <h2>Welcome to Reel Trouble</h2>
+        {!isLoggedIn && (
+          <h3 className={styles.loginMessage}>
+            Login to use all of Reel Trouble's features
+          </h3>
+        )}
       </div>
       <div className={styles.cardContainer}>
         {isLoggedIn ? (
@@ -36,9 +41,7 @@ function Home() {
             />
           </div>
         ) : (
-          <div className={styles.content}>
-            <h3>Login to use all of Reel Trouble's features</h3>
-          </div>
+          <div className={styles.content}></div>
         )}
         <div className={styles.cardContainer}>
           <FeatureCard
@@ -50,7 +53,7 @@ function Home() {
           />
         </div>
       </div>
-      <div className={styles.cardContainer}>
+      <div className={styles.cardFooter}>
         <Footer />
       </div>
     </div>

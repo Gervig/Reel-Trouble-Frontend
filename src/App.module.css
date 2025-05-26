@@ -501,5 +501,14 @@ table th.thcenter {
   flex-direction: row;
   justify-content: center;
   flex-wrap: nowrap;
+  margin-right: 1rem;
+  gap: 16px; 
+}
+
+.cardFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
   gap: 16px; 
 }
