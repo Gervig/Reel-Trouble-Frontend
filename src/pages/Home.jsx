@@ -2,6 +2,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Navrow from "../components/Navrow";
 import styles from "../App.module.css";
+import Dice from "../components/Dice";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
@@ -27,7 +28,7 @@ function Home() {
           <div className={styles.content}>
             <h3>
               <Link link to="/randombygenre">
-                <strong>Find a random movie by genre!</strong>
+                <Dice message={"Find a random movie by genre!"}/>
               </Link>
             </h3>
             <br />
