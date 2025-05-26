@@ -10,7 +10,12 @@ import FeatureCard from "../components/FeatureCard";
 function Home() {
   const { isLoggedIn } = useAuth();
 
-  const dice = ["https://raw.githubusercontent.com/Gervig/images-for-hosting/refs/heads/main/dice.png", "https://raw.githubusercontent.com/Gervig/images-for-hosting/refs/heads/main/dice.gif"];
+  const dice = {
+    staticSrc:
+      "https://raw.githubusercontent.com/Gervig/images-for-hosting/refs/heads/main/dice.png",
+    gifSrc:
+      "https://raw.githubusercontent.com/Gervig/images-for-hosting/refs/heads/main/dice.gif",
+  };
 
   return (
     <div className={styles.container}>
@@ -18,24 +23,36 @@ function Home() {
       <Navrow />
       <div className={styles.content}>
         <h2>Welcome to Reel Trouble</h2>
+      </div>
+      <div className={styles.cardContainer}>
         {isLoggedIn ? (
           <div className={styles.cardContainer}>
-            <FeatureCard className={styles.card} to="/random" imgStatic={dice[0]} imgGif={dice[1]} label="Random movie suggestion!"/>
-            <br />
+            <FeatureCard
+              className={styles.card}
+              to="/random"
+              imgStatic={dice.staticSrc}
+              imgGif={dice.gifSrc}
+              label="Random movie suggestion!"
+            />
           </div>
         ) : (
           <div className={styles.content}>
-            <br />
             <h3>Login to use all of Reel Trouble's features</h3>
           </div>
         )}
-        <h3>
-          <Link to="/randombygenre">
-            <Dice message={"Find a random movie by genre!"} />
-          </Link>
-        </h3>
+        <div className={styles.cardContainer}>
+          <FeatureCard
+            className={styles.card}
+            to="/randombygenre"
+            imgStatic={dice.staticSrc}
+            imgGif={dice.gifSrc}
+            label="Random movie by genre!"
+          />
+        </div>
       </div>
-      <Footer />
+      <div className={styles.cardContainer}>
+        <Footer />
+      </div>
     </div>
   );
 }
