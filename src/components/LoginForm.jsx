@@ -55,7 +55,7 @@ function LoginForm() {
             <p className={styles.userText}>
               Logged in as{" "}
               <Link to={`/users/${username}`}>
-                <strong>{username}</strong>
+                <strong>{username} 👤 </strong>
               </Link>
             </p>
             <button className={styles.button} onClick={logout}>
