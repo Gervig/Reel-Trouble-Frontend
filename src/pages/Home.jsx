@@ -26,15 +26,15 @@ function Home() {
           </div>
         ) : (
           <div className={styles.content}>
-            <h3>
-              <Link link to="/randombygenre">
-                <Dice message={"Find a random movie by genre!"}/>
-              </Link>
-            </h3>
             <br />
             <h3>Login to use all of Reel Trouble's features</h3>
           </div>
         )}
+        <h3>
+          <Link to="/randombygenre">
+            <Dice message={"Find a random movie by genre!"} />
+          </Link>
+        </h3>
       </div>
       <Footer />
     </div>

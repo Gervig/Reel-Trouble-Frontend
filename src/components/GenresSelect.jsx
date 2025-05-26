@@ -1,9 +1,11 @@
 import styles from "../App.module.css";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function GenresSelect() {
   const location = useLocation();
-  //TODO: get genres from API
+  const [selectedGenre, setSelectedGenre] = useState("");
+
   const genres = [
     "Science Fiction",
     "Action",
@@ -26,28 +28,38 @@ function GenresSelect() {
     "Documentary",
   ];
 
-  let buttonText = "";
-  
-  if(location.pathname === "/randombygenre") {
-    buttonText = "Find movie";
+  const buttonText = location.pathname === "/randombygenre" ? "Find movie" : "";
+
+  function getRandomMovieByGenre() {
+    console.log("Selected genre:", selectedGenre);
+    // Add logic here to fetch or display a random movie by genre
   }
-
-  function getRandomMovieByGenre(){
-
-  }
-
 
   return (
     <div>
-      <select className={styles.genreSelect} name="genres" id="genres">
-        <option value="" disabled selected>
+      <select
+        className={styles.genreSelect}
+        name="genres"
+        id="genres"
+        value={selectedGenre}
+        onChange={(e) => setSelectedGenre(e.target.value)}
+      >
+        <option value="" disabled>
           Select a genre
         </option>
-        {genres.map((genre) => {
-          return <option value={genre}>{genre}</option>;
-        })}
+        {genres.map((genre) => (
+          <option key={genre} value={genre}>
+            {genre}
+          </option>
+        ))}
       </select>
-      <button className={styles.genreButton}>{buttonText}</button>
+      <button
+        className={styles.genreButton}
+        onClick={getRandomMovieByGenre}
+        disabled={!selectedGenre}
+      >
+        {buttonText}
+      </button>
     </div>
   );
 }
