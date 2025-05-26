@@ -5,6 +5,7 @@ import Navrow from "../components/Navrow";
 import { useEffect, useState } from "react";
 import { fetchData } from "../util/fetchData";
 import Spinner from "../components/Spinner";
+import Footer from "../components/Footer";
 
 function AllMovies() {
   const [movies, setMovies] = useState([]);
@@ -38,6 +39,7 @@ function AllMovies() {
           <MovieList movies={movies} />
         </div>
       )}
+      <Footer />
     </div>
   );
 }
