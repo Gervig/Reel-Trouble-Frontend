@@ -97,12 +97,12 @@ const like = (username, movieId) => {
 };
 
 const unlike = (username, movieId) => {
-  const options = makeOptions("POST", true, {
+  const options = makeOptions("DELETE", true, {
     username: username,
     movieId: movieId,
   });
   return fetch(
-    BASE_URL + LIKE_ENDPOINT + "/" + username + "/" + movieId,
+    BASE_URL + UNLIKE_ENDPOINT + "/" + username + "/" + movieId,
     options
   ).then(handleHttpErrors);
 };

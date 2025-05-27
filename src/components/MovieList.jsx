@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { fetchData } from "../util/fetchData";
 import { useEffect, useState } from "react";
 import facade from "../util/apiFacade";
+import LikeButton from "./LikeButton";
 
 function MovieList({ movies }) {
   const { isLoggedIn, username } = useAuth();
@@ -27,6 +28,21 @@ function MovieList({ movies }) {
       })
       .catch((err) => {
         console.error("Failed to like movie", err);
+      });
+  }
+
+  function unlike(movie) {
+    facade
+      .unlike(username, movie.id)
+      .then(() => {
+        console.log(`Unliked movie: ${movie.title}`);
+        // Refresh liked movies after unliking
+        getUserMovies((data) => {
+          setUserMovies(data);
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to unlike movie", err);
       });
   }
 
@@ -71,16 +87,12 @@ function MovieList({ movies }) {
                   </td>
                   {isLoggedIn && (
                     <td className={styles.tdcenter}>
-                      <button
-                      className={alreadyLiked ? styles.likeButtonLiked : styles.likeButton}
-                        onClick={() => like(movie)}
-                        disabled={alreadyLiked}
-                        title={
-                          alreadyLiked ? "Already liked" : "Like this movie"
-                        }
-                      >
-                        {alreadyLiked ? "✅" : "👍"}
-                      </button>
+                      <LikeButton
+                        movie={movie}
+                        alreadyLiked={alreadyLiked}
+                        onLike={like}
+                        onUnlike={unlike}
+                      />
                     </td>
                   )}
                 </tr>
