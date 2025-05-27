@@ -10,12 +10,11 @@ import facade from "../util/apiFacade";
 import Movie from "../components/Movie";
 
 function RandomByGenre() {
-  const { username } = useAuth();
+  const { username, isLoggedIn } = useAuth();
   const [randomMovie, setRandomMovie] = useState(null);
   const [loading, setLoading] = useState(false);
 
   function getRandomByGenre(genre) {
-    console.log("selected genre: " + genre);
     if (!genre) {
       console.warn("Genre is null or empty, aborting fetch.");
       return;
@@ -34,6 +33,17 @@ function RandomByGenre() {
       });
   }
 
+  function like(movie) {
+    facade
+      .like(username, movie.id)
+      .then(() => {
+        console.log(`Liked movie: ${movie.title}`);
+      })
+      .catch((err) => {
+        console.error("Failed to like movie", err);
+      });
+  }
+
   return (
     <div className={styles.container}>
       <Header />
@@ -49,6 +59,14 @@ function RandomByGenre() {
         ) : (
           <div className={styles.content}>
             {randomMovie && <Movie movie={randomMovie} />}
+            {isLoggedIn && randomMovie && (
+              <button
+                className={styles.randomButton}
+                onClick={() => like(randomMovie)}
+              >
+                Like this movie!
+              </button>
+            )}
           </div>
         )}
       </div>
