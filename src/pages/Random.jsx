@@ -1,5 +1,5 @@
 import styles from "../App.module.css";
-import Movie from "./Movie";
+import Movie from "../components/Movie";
 import facade from "../util/apiFacade";
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
@@ -61,10 +61,10 @@ function Random() {
           <br />
           <br />
           <Movie movie={randomMovie} />
-          <button className={styles.content} onClick={getRandomMovie}>
+          <button className={styles.randomButton} onClick={getRandomMovie}>
             New random movie!
           </button>
-          <button className={styles.content} onClick={() => like(randomMovie)}>
+          <button className={styles.randomButton} onClick={() => like(randomMovie)}>
             Like this movie!
           </button>
         </div>

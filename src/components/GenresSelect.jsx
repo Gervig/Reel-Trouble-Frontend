@@ -2,7 +2,7 @@ import styles from "../App.module.css";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
-function GenresSelect() {
+function GenresSelect({ onSelect, onSubmit, buttonText: customButtonText }) {
   const location = useLocation();
   const [selectedGenre, setSelectedGenre] = useState("");
 
@@ -28,11 +28,18 @@ function GenresSelect() {
     "Documentary",
   ];
 
-  const buttonText = location.pathname === "/randombygenre" ? "Find movie" : "";
+  const buttonText =
+    customButtonText ||
+    (location.pathname === "/randombygenre" ? "Find movie" : "Filter");
 
-  function getRandomMovieByGenre() {
-    console.log("Selected genre:", selectedGenre);
-    // Add logic here to fetch or display a random movie by genre
+  function handleChange(e) {
+    const genre = e.target.value;
+    setSelectedGenre(genre);
+    onSelect?.(genre);
+  }
+
+  function handleClick() {
+    onSubmit?.(selectedGenre);
   }
 
   return (
@@ -42,7 +49,7 @@ function GenresSelect() {
         name="genres"
         id="genres"
         value={selectedGenre}
-        onChange={(e) => setSelectedGenre(e.target.value)}
+        onChange={handleChange}
       >
         <option value="" disabled>
           Select a genre
@@ -55,7 +62,7 @@ function GenresSelect() {
       </select>
       <button
         className={styles.genreButton}
-        onClick={getRandomMovieByGenre}
+        onClick={handleClick}
         disabled={!selectedGenre}
       >
         {buttonText}

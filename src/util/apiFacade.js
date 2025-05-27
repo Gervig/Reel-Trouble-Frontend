@@ -7,6 +7,7 @@ const LIKE_ENDPOINT = "movies/like";
 const UNLIKE_ENDPOINT = "movies/unlike";
 const ADMIN_ENDPOINT = "admin";
 const RANDOM_ENDPOINT = "movies/random";
+const RANDOM_BY_GENRE_ENDPOINT = "movies/random-movie";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -95,7 +96,6 @@ const like = (username, movieId) => {
   ).then(handleHttpErrors);
 };
 
-//TODO: implement unlike on backend, should be a POST or DELETE?
 const unlike = (username, movieId) => {
   const options = makeOptions("POST", true, {
     username: username,
@@ -113,6 +113,13 @@ const random = (username) => {
     handleHttpErrors
   );
 };
+
+const randomByGenre = (genre) => {
+  const options = makeOptions("GET", false);
+  return fetch(BASE_URL + RANDOM_BY_GENRE_ENDPOINT + "/" + genre, options).then(
+    handleHttpErrors
+  );
+}
 
 //Step 11
 const fetchData = () => {
@@ -150,6 +157,7 @@ const facade = {
   like,
   unlike,
   random,
+  randomByGenre,
 };
 
 export default facade;
