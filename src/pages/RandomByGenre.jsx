@@ -112,12 +112,6 @@ function RandomByGenre() {
           <div className={styles.content}>
             {randomMovie && <Movie movie={randomMovie} />}
             {isLoggedIn && randomMovie && (
-              // <button
-              //   className={styles.randomButton}
-              //   onClick={() => like(randomMovie)}
-              // >
-              //   Like this movie!
-              // </button>
               <LikeButton
                 movie={randomMovie}
                 alreadyLiked={alreadyLiked(randomMovie)}
