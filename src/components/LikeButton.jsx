@@ -1,7 +1,7 @@
 import styles from "../App.module.css";
 import { useState } from "react";
 
-function LikeButton({ movie, alreadyLiked, onLike, onUnlike }) {
+function LikeButton({ movie, alreadyLiked, onLike, onUnlike, text, style }) {
   const [hovered, setHovered] = useState(false);
 
   const handleClick = () => {
@@ -13,9 +13,9 @@ function LikeButton({ movie, alreadyLiked, onLike, onUnlike }) {
   };
 
   let icon = "";
-  if (alreadyLiked) {
+  if (alreadyLiked && !text) {
     icon = hovered ? "❌" : "✅";
-  } else {
+  } else if (!text) {
     icon = hovered ? "👍" : "\u00A0"; // using '\u00A0' to always render something so table doesn't jump around
   }
 
@@ -24,10 +24,16 @@ function LikeButton({ movie, alreadyLiked, onLike, onUnlike }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={handleClick}
-      className={alreadyLiked ? styles.likeButtonLiked : styles.likeButton}
+      className={
+        style
+          ? style
+          : alreadyLiked
+          ? styles.likeButtonLiked
+          : styles.likeButton
+      }
       title={alreadyLiked ? "Unlike this movie" : "Like this movie"}
     >
-      {icon}
+      {text} {icon}
     </button>
   );
 }
