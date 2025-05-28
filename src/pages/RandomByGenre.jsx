@@ -3,16 +3,36 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Navrow from "../components/Navrow";
 import { useAuth } from "../context/AuthContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GenresSelect from "../components/GenresSelect";
 import styles from "../App.module.css";
 import facade from "../util/apiFacade";
+import { fetchData } from "../util/fetchData";
 import Movie from "../components/Movie";
+import LikeButton from "../components/LikeButton";
 
 function RandomByGenre() {
   const { username, isLoggedIn } = useAuth();
+
+  const [movies, setMovies] = useState([]);
   const [randomMovie, setRandomMovie] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [userMovies, setUserMovies] = useState([]);
+
+  const URL = "https://reeltrouble.dataduck.dk/api/movies/history/" + username;
+  const URL_ALL = "https://reeltrouble.dataduck.dk/api/movies";
+
+  function alreadyLiked(movie) {
+    return userMovies.some((m) => m.id === movie.id);
+  }
+
+  function getMovies(callback) {
+    fetchData(URL_ALL, callback);
+  }
+
+  function getUserMovies(callback) {
+    fetchData(URL, callback);
+  }
 
   function getRandomByGenre(genre) {
     if (!genre) {
@@ -38,11 +58,43 @@ function RandomByGenre() {
       .like(username, movie.id)
       .then(() => {
         console.log(`Liked movie: ${movie.title}`);
+        // Refresh liked movies after liking
+        getUserMovies((data) => {
+          setUserMovies(data);
+        });
       })
       .catch((err) => {
         console.error("Failed to like movie", err);
       });
   }
+
+  function unlike(movie) {
+    facade
+      .unlike(username, movie.id)
+      .then(() => {
+        console.log(`Unliked movie: ${movie.title}`);
+        // Refresh liked movies after unliking
+        getUserMovies((data) => {
+          setUserMovies(data);
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to unlike movie", err);
+      });
+  }
+
+  useEffect(() => {
+    setLoading(true); // show spinner
+    getMovies((data) => {
+      setMovies(data);
+      setLoading(false); // hide spinner
+    });
+    if (username) {
+      getUserMovies((data) => {
+        setUserMovies(data);
+      });
+    }
+  }, [username]);
 
   return (
     <div className={styles.container}>
@@ -60,12 +112,24 @@ function RandomByGenre() {
           <div className={styles.content}>
             {randomMovie && <Movie movie={randomMovie} />}
             {isLoggedIn && randomMovie && (
-              <button
-                className={styles.randomButton}
-                onClick={() => like(randomMovie)}
-              >
-                Like this movie!
-              </button>
+              // <button
+              //   className={styles.randomButton}
+              //   onClick={() => like(randomMovie)}
+              // >
+              //   Like this movie!
+              // </button>
+              <LikeButton
+                movie={randomMovie}
+                alreadyLiked={alreadyLiked(randomMovie)}
+                onLike={like}
+                onUnlike={unlike}
+                text={
+                  alreadyLiked(randomMovie)
+                    ? "Unlike this movie! ❌"
+                    : "Like this movie! 👍"
+                }
+                style={styles.randomButton}
+              />
             )}
           </div>
         )}
