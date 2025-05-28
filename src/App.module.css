@@ -546,3 +546,8 @@ table th.thcenter {
 .movieListFilterButton:hover{
   background-color: #e54e35;
 }
+
+.movieListFilterInput {
+  font-family: sans-serif;
+  font-size: medium;
+}

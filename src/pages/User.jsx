@@ -9,10 +9,13 @@ import MovieList from "../components/MovieList";
 import Spinner from "../components/Spinner";
 import { fetchData } from "../util/fetchData";
 import { useEffect, useState } from "react";
+import MovieListFilter from "../components/MovieListFilter";
 
 function User() {
   const { isLoggedIn, username } = useAuth();
   const { username: routeUsername } = useParams();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,6 +32,16 @@ function User() {
       setLoading(false); // hide spinner
     });
   }, []);
+
+  const filteredMovies = movies.filter((movie) => {
+    const matchesGenre = selectedGenre
+      ? movie.genres?.some((genreObj) => genreObj.name === selectedGenre)
+      : true;
+    const matchesSearch = searchTerm
+      ? movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
+    return matchesGenre && matchesSearch;
+  });
 
   if (!isLoggedIn) {
     return (
@@ -60,7 +73,13 @@ function User() {
             <h2>loading...</h2>
           </div>
         ) : (
-          <MovieList movies={movies} />
+          <div className={styles.content}>
+            <MovieListFilter
+              onGenreSelect={setSelectedGenre}
+              onSearchChange={setSearchTerm}
+            />
+            <MovieList movies={filteredMovies} />
+          </div>
         )}
       </div>
       <Footer />

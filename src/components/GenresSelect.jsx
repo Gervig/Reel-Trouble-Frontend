@@ -1,9 +1,7 @@
 import styles from "../App.module.css";
-import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
 function GenresSelect({ onSelect, onSubmit, buttonText }) {
-  const location = useLocation();
   const [selectedGenre, setSelectedGenre] = useState("");
 
   const genres = [
@@ -31,15 +29,19 @@ function GenresSelect({ onSelect, onSubmit, buttonText }) {
   function handleChange(e) {
     const genre = e.target.value;
     setSelectedGenre(genre);
+
+    // If there's an onSelect handler (live filtering), call it immediately
     onSelect?.(genre);
   }
 
   function handleClick() {
-    onSubmit?.(selectedGenre);
+    if (selectedGenre) {
+      onSubmit?.(selectedGenre);
+    }
   }
 
   return (
-    <div>
+    <div className={styles.genreContainer}>
       <select
         className={styles.genreSelect}
         name="genres"
@@ -47,15 +49,15 @@ function GenresSelect({ onSelect, onSubmit, buttonText }) {
         value={selectedGenre}
         onChange={handleChange}
       >
-        <option value="" disabled>
-          Select a genre
-        </option>
+        <option value="">Select a genre</option>
         {genres.map((genre) => (
           <option key={genre} value={genre}>
             {genre}
           </option>
         ))}
       </select>
+
+      {/* Only render the button if manual submission is intended */}
       {onSubmit && (
         <button
           className={styles.genreButton}

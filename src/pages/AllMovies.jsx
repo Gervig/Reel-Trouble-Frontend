@@ -6,11 +6,14 @@ import { useEffect, useState } from "react";
 import { fetchData } from "../util/fetchData";
 import Spinner from "../components/Spinner";
 import Footer from "../components/Footer";
-import GenresSelect from "../components/GenresSelect";
+import MovieListFilter from "../components/MovieListFilter";
 
 function AllMovies() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
+
   const URL = "https://reeltrouble.dataduck.dk/api/movies";
 
   function getMovies(callback) {
@@ -18,12 +21,22 @@ function AllMovies() {
   }
 
   useEffect(() => {
-    setLoading(true); // show spinner
+    setLoading(true);
     getMovies((data) => {
       setMovies(data);
-      setLoading(false); // hide spinner
+      setLoading(false);
     });
   }, []);
+
+  const filteredMovies = movies.filter((movie) => {
+    const matchesGenre = selectedGenre
+      ? movie.genres?.some((genreObj) => genreObj.name === selectedGenre)
+      : true;
+    const matchesSearch = searchTerm
+      ? movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
+    return matchesGenre && matchesSearch;
+  });
 
   return (
     <div className={styles.container}>
@@ -37,11 +50,11 @@ function AllMovies() {
       ) : (
         <div className={styles.content}>
           <h1>All movies</h1>
-          <div className={styles.movieListFilter}>
-            <GenresSelect />
-            <button className={styles.movieListFilterButton}>Filter!</button>
-          </div>
-          <MovieList movies={movies} />
+          <MovieListFilter
+            onGenreSelect={setSelectedGenre}
+            onSearchChange={setSearchTerm}
+          />
+          <MovieList movies={filteredMovies} />
         </div>
       )}
       <Footer />
