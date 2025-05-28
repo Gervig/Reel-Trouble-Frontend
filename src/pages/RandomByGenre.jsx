@@ -102,7 +102,7 @@ function RandomByGenre() {
       <Navrow />
       <div className={styles.content}>
         <h2>Choose a genre to get a random movie!</h2>
-        <GenresSelect onSubmit={getRandomByGenre} />
+        <GenresSelect onSubmit={getRandomByGenre} buttonText={"Find movie!"}/>
         {loading ? (
           <div className={styles.content}>
             <Spinner />

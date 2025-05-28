@@ -2,7 +2,7 @@ import styles from "../App.module.css";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
-function GenresSelect({ onSelect, onSubmit, buttonText: customButtonText }) {
+function GenresSelect({ onSelect, onSubmit, buttonText }) {
   const location = useLocation();
   const [selectedGenre, setSelectedGenre] = useState("");
 
@@ -27,10 +27,6 @@ function GenresSelect({ onSelect, onSubmit, buttonText: customButtonText }) {
     "TV Movie",
     "Documentary",
   ];
-
-  const buttonText =
-    customButtonText ||
-    (location.pathname === "/randombygenre" ? "Find movie" : "Filter");
 
   function handleChange(e) {
     const genre = e.target.value;
@@ -60,13 +56,15 @@ function GenresSelect({ onSelect, onSubmit, buttonText: customButtonText }) {
           </option>
         ))}
       </select>
-      <button
-        className={styles.genreButton}
-        onClick={handleClick}
-        disabled={!selectedGenre}
-      >
-        {buttonText}
-      </button>
+      {onSubmit && (
+        <button
+          className={styles.genreButton}
+          onClick={handleClick}
+          disabled={!selectedGenre}
+        >
+          {buttonText}
+        </button>
+      )}
     </div>
   );
 }

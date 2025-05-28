@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { fetchData } from "../util/fetchData";
 import Spinner from "../components/Spinner";
 import Footer from "../components/Footer";
+import GenresSelect from "../components/GenresSelect";
 
 function AllMovies() {
   const [movies, setMovies] = useState([]);
@@ -36,6 +37,10 @@ function AllMovies() {
       ) : (
         <div className={styles.content}>
           <h1>All movies</h1>
+          <div className={styles.movieListFilter}>
+            <GenresSelect />
+            <button className={styles.movieListFilterButton}>Filter!</button>
+          </div>
           <MovieList movies={movies} />
         </div>
       )}

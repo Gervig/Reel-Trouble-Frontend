@@ -522,3 +522,27 @@ table th.thcenter {
   flex-wrap: nowrap;
   gap: 16px;
 }
+
+.movieListFilter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+.movieListFilterButton {
+  padding: 0.4rem 1rem;
+  border: none;
+  background-color: teal;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0rem auto;
+  margin-left: 0.25rem;
+}
+
+.movieListFilterButton:hover{
+  background-color: #e54e35;
+}
