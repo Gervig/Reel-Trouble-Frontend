@@ -50,6 +50,7 @@ function GenresSelect({ onSelect, onSubmit, buttonText }) {
         onChange={handleChange}
       >
         <option value="">Select a genre</option>
+        <option value="">All Genres</option>
         {genres.map((genre) => (
           <option key={genre} value={genre}>
             {genre}
