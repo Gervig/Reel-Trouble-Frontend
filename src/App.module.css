@@ -512,7 +512,7 @@ table th.thcenter {
   flex-direction: row;
   justify-content: center;
   flex-wrap: nowrap;
-  margin-right: 1rem;
+  background-color: #d6d4d4;
   gap: 16px;
 }
 
@@ -520,6 +520,7 @@ table th.thcenter {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: #d6d4d4;;
   flex-wrap: nowrap;
   gap: 16px;
 }
@@ -556,5 +557,5 @@ table th.thcenter {
 .tableContent {
   text-align: center;
   font-family: sans-serif;
-  background-color: #d6d4d4;;
+  background-color: #d6d4d4;
 }
