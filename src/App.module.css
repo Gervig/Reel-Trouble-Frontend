@@ -570,3 +570,18 @@ table th.thcenter {
   visibility: visible;
   opacity: 1;
 }
+
+.movieDescription {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex-wrap: nowrap;
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .movieDescription {
+    width: 100%; 
+  }
+}

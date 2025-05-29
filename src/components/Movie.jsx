@@ -12,6 +12,8 @@ function Movie({ movie }) {
           movie.releaseDate[1]
         ).padStart(2, "0")}-${String(movie.releaseDate[0]).slice(-4)}`}
       </p>
+      <p><strong>Description: </strong></p>
+      <p className={styles.movieDescription}>{movie.description}</p>
     </div>
   );
 }
