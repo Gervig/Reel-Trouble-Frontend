@@ -19,11 +19,17 @@ export const AuthProvider = ({ children }) => {
     setUsername("");
   };
 
+  // Check token on mount
   useEffect(() => {
-    // Set from persisted login (if any)
     if (facade.loggedIn()) {
-      setIsLoggedIn(true);
-      setUsername(facade.getUsername());
+      const token = facade.getToken();
+      const isExpired = isTokenExpired(token);
+      if (isExpired) {
+        logout();
+      } else {
+        setIsLoggedIn(true);
+        setUsername(facade.getUsername());
+      }
     }
   }, []);
 
@@ -35,3 +41,17 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
+
+// --- Helper to decode and check token expiry ---
+function isTokenExpired(token) {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const payload = JSON.parse(atob(base64));
+    const now = Math.floor(Date.now() / 1000);
+    return payload.exp < now;
+  } catch (err) {
+    console.error("Failed to decode token:", err);
+    return true; // Treat as expired if decoding fails
+  }
+}
