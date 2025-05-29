@@ -39,6 +39,11 @@ function Movie() {
         <div className={styles.content}>
           <h2>{movie.title}</h2>
           <ul className={styles.list}>
+            <li className={styles.item}>
+              {" "}
+              <strong>Description:</strong> <br />
+              {movie.description}
+            </li>
             <li className={styles.item}>⭐ IMDb rating: {movie.imdbRating}</li>
             <li className={styles.item}>🕓 Runtime: {movie.minutes} minutes</li>
             <li className={styles.item}>
@@ -49,13 +54,14 @@ function Movie() {
             </li>
             {movie.directors &&
               (movie.directors.length > 1 ? (
-                <li className={styles.item}>
+                <div>
+                  <br />
                   👥 <strong>Directors:</strong>
-                </li>
+                </div>
               ) : (
-                <li className={styles.item}>
+                <div>
                   👤 <strong>Director:</strong>
-                </li>
+                </div>
               ))}
             {movie.directors &&
               movie.directors.map((director) => (
@@ -65,9 +71,9 @@ function Movie() {
               ))}
 
             {movie.actors && (
-              <li className={styles.item}>
+              <div>
                 🎭 <strong>Actors:</strong>
-              </li>
+              </div>
             )}
             {movie.actors &&
               movie.actors.map((actor) => (
