@@ -44,6 +44,10 @@ function MovieList({ movies }) {
     setSortConfig({ key, direction });
   }
 
+  function isMovieLiked(movie) {
+    return userMovies.some((m) => m.id === movie.id);
+  }
+
   function sortMovies(movies) {
     if (!sortConfig.key) return movies;
 
@@ -51,6 +55,15 @@ function MovieList({ movies }) {
     sorted.sort((a, b) => {
       let aVal = a[sortConfig.key];
       let bVal = b[sortConfig.key];
+
+      // Special case: liked
+      if (sortConfig.key === "liked") {
+        const aLiked = isMovieLiked(a) ? 1 : 0;
+        const bLiked = isMovieLiked(b) ? 1 : 0;
+        return sortConfig.direction === "asc"
+          ? bLiked - aLiked
+          : aLiked - bLiked;
+      }
 
       if (sortConfig.key === "title") {
         aVal = aVal.toLowerCase();
@@ -112,12 +125,22 @@ function MovieList({ movies }) {
                 {sortConfig.key === "releaseDate" &&
                   (sortConfig.direction === "asc" ? "▲" : "▼")}
               </th>
-              {isLoggedIn && <th className={styles.thcenter}>Like</th>}
+              {isLoggedIn && (
+                <th
+                  className={styles.thcenter}
+                  onClick={() => handleSort("liked")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Like{" "}
+                  {sortConfig.key === "liked" &&
+                    (sortConfig.direction === "asc" ? "▲" : "▼")}
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
             {sortedMovies.map((movie) => {
-              const alreadyLiked = userMovies.some((m) => m.id === movie.id);
+              const alreadyLiked = isMovieLiked(movie);
 
               return (
                 <tr key={movie.id} className={styles.movieTableRow}>
