@@ -157,6 +157,7 @@ p {
   grid-area: footer;
   text-align: center;
   text-align: center;
+  background-color: #d6d4d4;;
   padding: 1rem;
 }
 
@@ -543,11 +544,17 @@ table th.thcenter {
   margin-left: 0.25rem;
 }
 
-.movieListFilterButton:hover{
+.movieListFilterButton:hover {
   background-color: #e54e35;
 }
 
 .movieListFilterInput {
   font-family: sans-serif;
   font-size: medium;
+}
+
+.tableContent {
+  text-align: center;
+  font-family: sans-serif;
+  background-color: #d6d4d4;;
 }

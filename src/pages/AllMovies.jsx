@@ -48,7 +48,7 @@ function AllMovies() {
           <h2>loading...</h2>
         </div>
       ) : (
-        <div className={styles.content}>
+        <div className={styles.tableContent}>
           <h1>All movies</h1>
           <MovieListFilter
             onGenreSelect={setSelectedGenre}

@@ -64,7 +64,7 @@ function User() {
     <div className={styles.container}>
       <Header />
       <Navrow />
-      <div className={styles.content}>
+      <div className={styles.tableContent}>
         <h1>{username}'s user page!</h1>
         <h2>{username}'s like-list</h2>
         {loading ? (
@@ -73,7 +73,7 @@ function User() {
             <h2>loading...</h2>
           </div>
         ) : (
-          <div className={styles.content}>
+          <div className={styles.tableContent}>
             <MovieListFilter
               onGenreSelect={setSelectedGenre}
               onSearchChange={setSearchTerm}
