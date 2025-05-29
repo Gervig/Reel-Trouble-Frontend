@@ -13,7 +13,6 @@ import LikeButton from "../components/LikeButton";
 function Random() {
   const { isLoggedIn, username } = useAuth();
 
-  const [movies, setMovies] = useState([]);
   const [randomMovie, setRandomMovie] = useState();
   const [loading, setLoading] = useState(true);
   const [userMovies, setUserMovies] = useState([]);
@@ -25,9 +24,7 @@ function Random() {
     return userMovies.some((m) => m.id === movie.id);
   }
 
-  function getMovies(callback) {
-    fetchData(URL_ALL, callback);
-  }
+
 
   function getRandomMovie() {
     setLoading(true);
@@ -80,10 +77,6 @@ function Random() {
   useEffect(() => {
     setLoading(true); // show spinner
     getRandomMovie();
-    getMovies((data) => {
-      setMovies(data);
-      setLoading(false); // hide spinner
-    });
     if (username) {
       getUserMovies((data) => {
         setUserMovies(data);
