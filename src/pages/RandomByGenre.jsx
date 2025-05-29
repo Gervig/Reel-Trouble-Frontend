@@ -14,7 +14,6 @@ import LikeButton from "../components/LikeButton";
 function RandomByGenre() {
   const { username, isLoggedIn } = useAuth();
 
-  const [movies, setMovies] = useState([]);
   const [randomMovie, setRandomMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [userMovies, setUserMovies] = useState([]);
@@ -24,10 +23,6 @@ function RandomByGenre() {
 
   function alreadyLiked(movie) {
     return userMovies.some((m) => m.id === movie.id);
-  }
-
-  function getMovies(callback) {
-    fetchData(URL_ALL, callback);
   }
 
   function getUserMovies(callback) {
@@ -84,11 +79,6 @@ function RandomByGenre() {
   }
 
   useEffect(() => {
-    setLoading(true); // show spinner
-    getMovies((data) => {
-      setMovies(data);
-      setLoading(false); // hide spinner
-    });
     if (username) {
       getUserMovies((data) => {
         setUserMovies(data);
