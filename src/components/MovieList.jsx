@@ -4,6 +4,7 @@ import { fetchData } from "../util/fetchData";
 import { useEffect, useState } from "react";
 import facade from "../util/apiFacade";
 import LikeButton from "./LikeButton";
+import { Link } from "react-router-dom";
 
 function MovieList({ movies }) {
   const { isLoggedIn, username } = useAuth();
@@ -145,7 +146,12 @@ function MovieList({ movies }) {
               return (
                 <tr key={movie.id} className={styles.movieTableRow}>
                   <td className={styles.tdleft}>
-                    <strong>{movie.title}</strong>
+                    <strong>
+                      {movie.title}{" "}
+                      <Link to={`/movie/${movie.id}`}>
+                        <span className={styles.searchIcon}>🔍</span>
+                      </Link>
+                    </strong>
                   </td>
                   <td className={styles.tdcenter}>{movie.imdbRating}</td>
                   <td className={styles.tdcenter}>{movie.minutes}</td>

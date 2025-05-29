@@ -8,6 +8,7 @@ import AllMovies from "./pages/AllMovies";
 import Random from "./pages/Random";
 import User from "./pages/User";
 import RandomByGenre from "./pages/RandomByGenre";
+import Movie from "./pages/Movie";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/movies" element={<AllMovies />} />
               <Route path="/users/:username" element={<User />} />
+              <Route path="movie/:movieId" element={<Movie />}></Route>
               <Route path="/error" element={<Error />} />
               <Route path="/random" element={<Random />}></Route>
               <Route path="/randombygenre" element={<RandomByGenre />}></Route>

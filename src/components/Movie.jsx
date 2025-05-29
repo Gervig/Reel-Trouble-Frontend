@@ -4,7 +4,7 @@ function Movie({ movie }) {
   return (
     <div className={styles.content}>
       <h2>{movie.title}</h2>
-      <p>⭐ IMDb rating: {movie.imdbRating} </p>
+      <p>⭐ IMDb rating: {movie.imdbRating}</p>
       <p>🕓 Runtime: {movie.minutes} minutes</p>
       <p>
         📅 Release:{" "}
