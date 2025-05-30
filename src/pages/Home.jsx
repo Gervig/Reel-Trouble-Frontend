@@ -41,7 +41,7 @@ function Home() {
             />
           </div>
         ) : (
-          <div className={styles.content}></div>
+          <></>
         )}
         <div className={styles.cardContainer}>
           <FeatureCard
