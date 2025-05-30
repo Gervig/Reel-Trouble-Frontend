@@ -8,7 +8,7 @@ function EndPoints() {
     <div className={styles.container}>
       <Header />
       <Navrow />
-      <div className={styles.content}>
+      <div className={styles.tableContent}>
         <h1>Endpoints Table</h1>
         <div className={styles.tableContainer}>
           <table className={styles.endpointTable}>

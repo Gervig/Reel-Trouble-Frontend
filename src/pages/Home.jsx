@@ -21,7 +21,7 @@ function Home() {
     <div className={styles.container}>
       <Header />
       <Navrow />
-      <div className={styles.content}>
+      <div className={styles.tableContent}>
         <h2>Welcome to Reel Trouble</h2>
         {!isLoggedIn && (
           <h3 className={styles.loginMessage}>

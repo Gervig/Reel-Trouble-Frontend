@@ -1,9 +1,7 @@
 import styles from "../App.module.css";
-import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
-function GenresSelect() {
-  const location = useLocation();
+function GenresSelect({ onSelect, onSubmit, buttonText }) {
   const [selectedGenre, setSelectedGenre] = useState("");
 
   const genres = [
@@ -28,38 +26,48 @@ function GenresSelect() {
     "Documentary",
   ];
 
-  const buttonText = location.pathname === "/randombygenre" ? "Find movie" : "";
+  function handleChange(e) {
+    const genre = e.target.value;
+    setSelectedGenre(genre);
 
-  function getRandomMovieByGenre() {
-    console.log("Selected genre:", selectedGenre);
-    // Add logic here to fetch or display a random movie by genre
+    // If there's an onSelect handler (live filtering), call it immediately
+    onSelect?.(genre);
+  }
+
+  function handleClick() {
+    if (selectedGenre) {
+      onSubmit?.(selectedGenre);
+    }
   }
 
   return (
-    <div>
+    <div className={styles.genreContainer}>
       <select
         className={styles.genreSelect}
         name="genres"
         id="genres"
         value={selectedGenre}
-        onChange={(e) => setSelectedGenre(e.target.value)}
+        onChange={handleChange}
       >
-        <option value="" disabled>
-          Select a genre
-        </option>
+        <option value="">Select a genre</option>
+        <option value="">All Genres</option>
         {genres.map((genre) => (
           <option key={genre} value={genre}>
             {genre}
           </option>
         ))}
       </select>
-      <button
-        className={styles.genreButton}
-        onClick={getRandomMovieByGenre}
-        disabled={!selectedGenre}
-      >
-        {buttonText}
-      </button>
+
+      {/* Only render the button if manual submission is intended */}
+      {onSubmit && (
+        <button
+          className={styles.genreButton}
+          onClick={handleClick}
+          disabled={!selectedGenre}
+        >
+          {buttonText}
+        </button>
+      )}
     </div>
   );
 }
