@@ -23,8 +23,8 @@ function App() {
               <Route path="/movies" element={<AllMovies />} />
               <Route path="/users/:username" element={<User />} />
               <Route path="/error" element={<Error />} />
-              <Route path="/random" element={<Random />}></Route>
-              <Route path="/randombygenre" element={<RandomByGenre />}></Route>
+              <Route path="/random" element={<Random />} />
+              <Route path="/randombygenre" element={<RandomByGenre />} />
             </Routes>
           </div>
         </Router>
