@@ -23,7 +23,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/movies" element={<AllMovies />} />
               <Route path="/users/:username" element={<User />} />
-              <Route path="movie/:movieId" element={<Movie />}></Route>
+              <Route path="movie/:movieId" element={<Movie />} />
               <Route path="/error" element={<Error />} />
               <Route path="/random" element={<Random />} />
               <Route path="/randombygenre" element={<RandomByGenre />} />
