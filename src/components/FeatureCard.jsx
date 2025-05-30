@@ -1,8 +1,9 @@
 import styles from "../App.module.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import Dice from "./Dice";
+import { useState } from "react";
 
-function FeatureCard({ to, imgStatic, imgGif, label }) {
+function FeatureCard({ to, label }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -12,12 +13,7 @@ function FeatureCard({ to, imgStatic, imgGif, label }) {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <img
-          src={hovered ? imgGif : imgStatic}
-          alt={label}
-          className={styles.cardImage}
-        />
-        <p className={styles.cardText}>{label}</p>
+        <Dice isHovered={hovered}>{label}</Dice>
       </div>
     </Link>
   );

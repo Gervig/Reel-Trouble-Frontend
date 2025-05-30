@@ -2,9 +2,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Navrow from "../components/Navrow";
 import styles from "../App.module.css";
-import Dice from "../components/Dice";
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
 import FeatureCard from "../components/FeatureCard";
 
 function Home() {
@@ -32,25 +30,13 @@ function Home() {
       <div className={styles.cardContainer}>
         {isLoggedIn ? (
           <div className={styles.cardContainer}>
-            <FeatureCard
-              className={styles.card}
-              to="/random"
-              imgStatic={dice.staticSrc}
-              imgGif={dice.gifSrc}
-              label="Random movie suggestion!"
-            />
+            <FeatureCard to="/random" label="Random movie suggestion!" />
           </div>
         ) : (
           <></>
         )}
         <div className={styles.cardContainer}>
-          <FeatureCard
-            className={styles.card}
-            to="/randombygenre"
-            imgStatic={dice.staticSrc}
-            imgGif={dice.gifSrc}
-            label="Random movie by genre!"
-          />
+          <FeatureCard to="/randombygenre" label="Random movie by genre!" />
         </div>
       </div>
       <div className={styles.cardFooter}>
