@@ -8,13 +8,6 @@ import FeatureCard from "../components/FeatureCard";
 function Home() {
   const { isLoggedIn } = useAuth();
 
-  const dice = {
-    staticSrc:
-      "https://raw.githubusercontent.com/Gervig/images-for-hosting/refs/heads/main/dice.png",
-    gifSrc:
-      "https://raw.githubusercontent.com/Gervig/images-for-hosting/refs/heads/main/dice.gif",
-  };
-
   return (
     <div className={styles.container}>
       <Header />
