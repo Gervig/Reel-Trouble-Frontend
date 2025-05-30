@@ -1,12 +1,10 @@
-export function fetchData(url, callback, method, body) {
+export function fetchData(url, callback, method = "GET", body = null) {
   const headers = { Accept: "application/json" };
 
-  // Tilføj Content-Type header for POST og PUT
   if (method === "POST" || method === "PUT") {
     headers["Content-Type"] = "application/json";
   }
 
-  // Tilføj Authorization header, hvis token findes
   const token = localStorage.getItem("jwtToken");
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
@@ -22,18 +20,19 @@ export function fetchData(url, callback, method, body) {
   }
 
   fetch(url, options)
-    .then((res) => {
+    .then(async (res) => {
+      const data = await res.json().catch(() => null); // Safe JSON parse
       if (!res.ok) {
-        return Promise.reject({ status: res.status, fullError: res.json() });
-      }
-      return res.json();
-    })
-    .then((data) => callback(data))
-    .catch((err) => {
-      if (err.status) {
-        err.fullError.then((e) => console.log(e.detail));
+        callback(null, {
+          status: res.status,
+          message: data?.detail || res.statusText,
+        });
       } else {
-        console.log(err);
+        callback(data, null);
       }
+    })
+    .catch((err) => {
+      console.error("Network error:", err);
+      callback(null, { status: 500, message: "Network error" });
     });
 }

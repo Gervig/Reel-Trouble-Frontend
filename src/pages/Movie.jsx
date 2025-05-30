@@ -6,25 +6,31 @@ import Header from "../components/Header";
 import Navrow from "../components/Navrow";
 import Footer from "../components/Footer";
 import Spinner from "../components/Spinner";
+import ErrorPage from "../pages/Error";
 
 function Movie() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const URL = "https://reeltrouble.dataduck.dk/api/movies/movie/" + movieId;
 
-  function getMovie(callback) {
-    fetchData(URL, callback);
-  }
-
   useEffect(() => {
     setLoading(true);
-    getMovie((data) => {
-      setMovie(data);
+    fetchData(URL, (data, error) => {
+      if (error) {
+        setError(error); // pass status/message to state
+      } else {
+        setMovie(data);
+      }
       setLoading(false);
     });
   }, []);
+
+  if (error) {
+    return <ErrorPage message={`Error 404, Movie not found`} />; // actually a 500 error
+  }
 
   return (
     <div className={styles.container}>
