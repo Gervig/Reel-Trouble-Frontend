@@ -19,7 +19,6 @@ function RandomByGenre() {
   const [userMovies, setUserMovies] = useState([]);
 
   const URL = "https://reeltrouble.dataduck.dk/api/movies/history/" + username;
-  const URL_ALL = "https://reeltrouble.dataduck.dk/api/movies";
 
   function alreadyLiked(movie) {
     return userMovies.some((m) => m.id === movie.id);
