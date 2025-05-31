@@ -24,8 +24,6 @@ function Random() {
     return userMovies.some((m) => m.id === movie.id);
   }
 
-
-
   function getRandomMovie() {
     setLoading(true);
     facade
