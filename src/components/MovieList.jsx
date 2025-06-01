@@ -148,7 +148,7 @@ function MovieList({ movies }) {
                   <td className={styles.tdleft}>
                     <strong>
                       {movie.title}{" "}
-                      <Link to={`/movie/${movie.id}`}>
+                      <Link to={`/movies/${movie.id}`}>
                         <span className={styles.searchIcon}>🔍</span>
                       </Link>
                     </strong>
