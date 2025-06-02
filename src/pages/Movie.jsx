@@ -29,7 +29,7 @@ function Movie() {
   }, []);
 
   if (error) {
-    return <ErrorPage message={`Error 404, Movie not found`} />; // actually a 500 error
+    return <ErrorPage message={`Error, Movie not found`} />; // actually a 500 error
   }
 
   return (
