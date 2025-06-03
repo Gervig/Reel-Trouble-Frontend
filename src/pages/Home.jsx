@@ -21,16 +21,10 @@ function Home() {
         )}
       </div>
       <div className={styles.cardContainer}>
-        {isLoggedIn ? (
-          <div className={styles.cardContainer}>
-            <FeatureCard to="/random" label="Random movie suggestion!" />
-          </div>
-        ) : (
-          <></>
+        {isLoggedIn && (
+          <FeatureCard to="/random" label="Random movie suggestion!" />
         )}
-        <div className={styles.cardContainer}>
-          <FeatureCard to="/randombygenre" label="Random movie by genre!" />
-        </div>
+        <FeatureCard to="/randombygenre" label="Random movie by genre!" />
       </div>
       <div className={styles.cardFooter}>
         <Footer />
