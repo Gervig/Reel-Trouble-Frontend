@@ -39,8 +39,8 @@ function GenresSelectUncontrolled({ onSubmit, buttonText }) {
         className={styles.genreSelect}
         name="genres"
         id="genres"
-        ref={selectRef} // 🔸 Uncontrolled: useRef instead of useState
-        defaultValue="" // Optional: set initial value
+        ref={selectRef} // Uncontrolled: useRef instead of useState
+        defaultValue=""
       >
         <option value="">Select a genre</option>
         <option value="">All Genres</option>
